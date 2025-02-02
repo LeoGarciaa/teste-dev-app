@@ -19,8 +19,10 @@ class MedicoController extends Controller
         return $this->medico->orderBy('nome')->get();
     }
 
-    public function show(Medico $medico)
+    public function show(string $nome)
     {
+        $nome = ltrim(str_replace(['DRA','DR'],'',  strtoupper($nome)));
+        $medico = Medico::where('nome','LIKE', '%'.$nome.'%')->orderBy('nome')->get();
         return $medico;
     }
 
@@ -29,7 +31,7 @@ class MedicoController extends Controller
         $medico = Medico::create($request->all());
         return response()->json($medico, 201);
     }
-
+    
     public function pacientes(Medico $medico)
     {
         return response()->json($medico->pacientes, 200);
