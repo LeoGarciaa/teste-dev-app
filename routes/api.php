@@ -21,5 +21,6 @@ Route::apiResource('medicos', MedicoController::class);
 Route::apiResource('cidades', CidadeController::class);
 Route::apiResource('pacientes', PacienteController::class);
 Route::apiResource('consultas', ConsultaController::class);
+Route::get('medicos/{medico}/pacientes', [MedicoController::class, 'pacientes']);
 
 

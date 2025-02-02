@@ -31,4 +31,9 @@ class MedicoController extends Controller
         $medico = Medico::create($request->all());
         return response()->json($medico, 201);
     }
+    
+    public function pacientes(Medico $medico)
+    {
+        return response()->json($medico->pacientes, 200);
+    }
 }
