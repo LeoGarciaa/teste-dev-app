@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('medico_id')->unsigned();
             $table->bigInteger('paciente_id')->unsigned();
-            $table->timestamp('dt_consulta')->format('Y-m-d H:i:s');
+            $table->timestamp('data')->format('Y-m-d H:i:s');
             $table->foreign('medico_id')->references('id')->on('medicos');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->timestamp('created_at')->useCurrent();

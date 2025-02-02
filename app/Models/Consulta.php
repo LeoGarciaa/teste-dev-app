@@ -13,6 +13,6 @@ class Consulta extends Model
     protected $fillable = [
         'medico_id',
         'paciente_id',
-        'dt_consulta'
+        'data'
     ];
 }

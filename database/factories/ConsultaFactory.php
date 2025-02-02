@@ -19,7 +19,7 @@ class ConsultaFactory extends Factory
         return [
             'medico_id' => $this->faker->numberBetween(1, 10),
             'paciente_id' => $this->faker->numberBetween(1, 100),
-            'dt_consulta' => $this->faker->date()
+            'data' => $this->faker->date()
         ];
     }
 }

@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ConsultaRequest extends FormRequest
+class StoreConsultaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,6 +24,7 @@ class ConsultaRequest extends FormRequest
         return [
             'medico_id' => ['required', 'integer', 'exists:medicos,id'],
             'paciente_id' => ['required','integer', 'exists:pacientes,id'],
+            'data' => ['required','date']
         ];
     }
 }
