@@ -18,4 +18,9 @@ class Paciente extends Model
         'cpf',
         'celular'
     ];
+
+    public function medicos()
+    {
+        return $this->belongsToMany(Medico::class, 'consultas', 'paciente_id', 'medico_id')->withTimestamps();
+    }
 }
