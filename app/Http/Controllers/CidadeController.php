@@ -12,8 +12,13 @@ class CidadeController extends Controller
     {
 
     }
-    public function index()
+    public function index(string $nome = null)
     {
-        return $this->cidade->all();
+
+        if (is_null($nome)) {
+            return $this->cidade->orderBy('nome')->get();
+        }
+
+         return Cidade::where('nome','LIKE', '%'.$nome.'%')->orderBy('nome')->get();
     }
 }

@@ -14,5 +14,5 @@ Route::get('/', function () {
 
 Route::post('login', [AuthController::class, 'login']);
 
-Route::apiResource('cidades', CidadeController::class);
+Route::apiResource('cidades/{nome?}', CidadeController::class);
 Route::apiResource('medicos/{nome?}', MedicoController::class);
