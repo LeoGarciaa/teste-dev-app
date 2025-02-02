@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\MedicoController;
+
 
 Route::get('/', function () {
     return response()->json([
@@ -13,3 +15,4 @@ Route::get('/', function () {
 Route::post('login', [AuthController::class, 'login']);
 
 Route::apiResource('cidades', CidadeController::class);
+Route::apiResource('medicos/{nome?}', MedicoController::class);
