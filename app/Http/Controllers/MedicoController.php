@@ -13,21 +13,22 @@ class MedicoController extends Controller
     {
         //$this->middleware('auth:sanctum')->except(['index', 'show']);
     }
-    public function index(string $nome = null)
-    {
-        if (is_null($nome)) {
-            return $this->medico->orderBy('nome')->get();
-        }
 
+    public function index()
+    {
+        return $this->medico->orderBy('nome')->get();
+    }
+
+    public function show(string $nome)
+    {
         $nome = ltrim(str_replace(['DRA','DR'],'',  strtoupper($nome)));
-        
-        return Medico::where('nome','LIKE', '%'.$nome.'%')->orderBy('nome')->get();
+        $medico = Medico::where('nome','LIKE', '%'.$nome.'%')->orderBy('nome')->get();
+        return $medico;
     }
 
     public function store(StoreMedicoRequest $request)
     {
         $medico = Medico::create($request->all());
-
         return response()->json($medico, 201);
     }
 }

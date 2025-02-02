@@ -12,13 +12,20 @@ class CidadeController extends Controller
     {
 
     }
+
     public function index(string $nome = null)
     {
+        return $this->cidade->orderBy('nome')->get();
+    }
 
-        if (is_null($nome)) {
-            return $this->cidade->orderBy('nome')->get();
-        }
-
+    public function show(string $nome = null)
+    {
          return Cidade::where('nome','LIKE', '%'.$nome.'%')->orderBy('nome')->get();
+    }
+
+    public function medicos(int $cidade_id)
+    {
+        $cidade = $this->cidade->where('id', $cidade_id)->with('medicos')->get();
+        return $cidade->medicos;
     }
 }
