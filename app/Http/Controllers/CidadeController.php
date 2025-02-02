@@ -25,7 +25,7 @@ class CidadeController extends Controller
 
     public function medicos(int $cidade_id)
     {
-        $cidade = $this->cidade->where('id', $cidade_id)->with('medicos')->get();
+        $cidade = $this->cidade->where('id', $cidade_id)->with('medicos')->first();
         return $cidade->medicos;
     }
 }

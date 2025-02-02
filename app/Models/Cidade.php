@@ -13,5 +13,10 @@ class Cidade extends Model
     use HasFactory;
     use SoftDeletes;
 
-    //$table = 'cidade';
+    protected $guarded = [];
+
+    public function medicos()
+    {
+        return $this->hasMany(Medico::class);
+    }
 }
